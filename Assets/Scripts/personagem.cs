@@ -1,0 +1,122 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine.UI;
+using UnityEngine;
+using UnityEngine.InputSystem;
+
+[RequireComponent(typeof(CharacterController), typeof(PlayerInput))]
+public class personagem : MonoBehaviour
+{
+    // Variáveis de controle de movimento do player.
+    [SerializeField]
+    private float playerSpeed = 2.0f;
+    [SerializeField]
+    private float jumpHeight = 1.0f;
+    [SerializeField]
+    private float gravityValue = -9.81f;
+    [SerializeField]
+    private float rotationSpeed = .9f;
+
+    private PlayerInput playerInput;
+    private CharacterController controller;
+    private Vector3 playerVelocity;
+    private bool groundedPlayer;
+    private Transform cameraTransform;
+
+    private InputAction moveAction;
+    private InputAction jumpAction;
+    private InputAction shootAction;
+
+    public int vida = 100;
+    private Text txtVida;
+
+    // Controla a direção do disparo.
+    private Vector3 posicaoProjetil;
+
+    // prefab do projetil.
+    public GameObject projetilPrefab;
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        txtVida = GameObject.Find("txtVida").GetComponent<Text>();
+        vida = 100;
+        txtVida.text = $"Vida: {vida}";
+
+        controller = GetComponent<CharacterController>();
+        playerInput = GetComponent<PlayerInput>();
+        cameraTransform = Camera.main.transform;
+        moveAction = playerInput.actions["Move"];
+        jumpAction = playerInput.actions["Jump"];
+        shootAction = playerInput.actions["Shoot"];
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        txtVida.text = $"Vida: {vida}";
+
+        if (vida <= 0)
+        {
+            Destroy(gameObject);
+        }
+
+        MovimentarPersonagem();
+
+        if (shootAction.triggered)
+        {
+            Atirar();
+        }
+    }
+
+    void MovimentarPersonagem()
+    {
+        groundedPlayer = controller.isGrounded;
+        if (groundedPlayer && playerVelocity.y < 0)
+        {
+            playerVelocity.y = 0f;
+        }
+
+        Vector2 input = moveAction.ReadValue<Vector2>();
+        Vector3 move = new Vector3(input.x, 0, input.y);
+
+        move = move.x * cameraTransform.right.normalized + move.z * cameraTransform.forward.normalized;
+        move.y = 0f;
+
+        controller.Move(move * Time.deltaTime * playerSpeed);
+
+
+        if (jumpAction.triggered && groundedPlayer)
+        {
+            playerVelocity.y += Mathf.Sqrt(jumpHeight * -3.0f * gravityValue);
+        }
+
+        playerVelocity.y += gravityValue * Time.deltaTime;
+        controller.Move(playerVelocity * Time.deltaTime);
+
+        // rotaciona a camera
+        Quaternion targetRotation = Quaternion.Euler(0, cameraTransform.eulerAngles.y, 0);
+        transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+    }
+
+    void Atirar()
+    {
+        // Calcula a posição relativa do projetil evitando a colisão acidental com o player.
+        float distanciaPlayerProjetil = 2f;
+        float alturaPlayerProjetil = 0.9f;
+
+        float angulo = transform.eulerAngles.y * Mathf.Deg2Rad;
+        this.posicaoProjetil.x = transform.position.x + distanciaPlayerProjetil * Mathf.Sin(angulo);
+        this.posicaoProjetil.y = transform.position.y + alturaPlayerProjetil;
+        this.posicaoProjetil.z = transform.position.z + distanciaPlayerProjetil * Mathf.Cos(angulo);
+
+        // Cria o projetil em tempo de execução.
+        Instantiate(projetilPrefab, posicaoProjetil, transform.rotation);
+    }
+
+    public void DarDanoAoPlayer(int intDano)
+    {
+        Debug.Log("Dando dano ao player.");
+        vida -= intDano;
+    }
+}

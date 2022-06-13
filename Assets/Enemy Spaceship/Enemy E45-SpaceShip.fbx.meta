@@ -2,7 +2,13 @@ fileFormatVersion: 2
 guid: 4102327dc62bae94b9c9d7ea0b647aa6
 ModelImporter:
   serializedVersion: 20200
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      74: 4781951162920444690
+    second: Armature|ArmatureAction
+  - first:
+      74: -1559071518392153964
+    second: Armature|Cube.001Action
   externalObjects:
   - first:
       type: UnityEngine:Material
@@ -22,6 +28,11 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: Material.004
+    second: {fileID: 2100000, guid: e767388fb0541984c982217693ca462d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: Material.005
     second: {fileID: 2100000, guid: 29a047896c59ba34299ee197c1b42f40, type: 2}
   - first:
@@ -29,6 +40,11 @@ ModelImporter:
       assembly: UnityEngine.CoreModule
       name: Material.009
     second: {fileID: 2100000, guid: 037551725cc815d4dbeb30d6f93b38ea, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: ship
+    second: {fileID: 2100000, guid: 29a047896c59ba34299ee197c1b42f40, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule

@@ -102,8 +102,8 @@ public class personagem : MonoBehaviour
     void Atirar()
     {
         // Calcula a posição relativa do projetil evitando a colisão acidental com o player.
-        float distanciaPlayerProjetil = 2f;
-        float alturaPlayerProjetil = 0.9f;
+        float distanciaPlayerProjetil = 5f;
+        float alturaPlayerProjetil = 0.3f;
 
         float angulo = transform.eulerAngles.y * Mathf.Deg2Rad;
         this.posicaoProjetil.x = transform.position.x + distanciaPlayerProjetil * Mathf.Sin(angulo);

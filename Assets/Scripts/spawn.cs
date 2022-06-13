@@ -8,9 +8,6 @@ public class spawn : MonoBehaviour
     public float tempoParaRespawnInimigo = 5;
     public GameObject inimigoPrefab;
 
-    // Respawna o player;
-    public GameObject playerPrefab;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -38,9 +35,7 @@ public class spawn : MonoBehaviour
         // Controla o respawn do Player por tempo.
         if (GameObject.Find("Player") == null)
         {
-            Debug.Log("Iniciando respawn do player.");
-            RespawnPlayer();
-            Debug.Log("Respawn do player completo.");
+            Debug.Log("Acabou o jogo, game over!");
         }
     }
 
@@ -48,13 +43,5 @@ public class spawn : MonoBehaviour
     {
         Vector3 position = new Vector3(Random.Range(-10.0F, 10.0F), 1, Random.Range(-10.0F, 10.0F));
         Instantiate(inimigoPrefab, position, Quaternion.identity);
-    }
-
-    void RespawnPlayer()
-    {
-        Vector3 position = new Vector3(Random.Range(-10.0F, 10.0F), 0.5f, Random.Range(-10.0F, 10.0F));
-
-        GameObject player = (GameObject)Instantiate(playerPrefab, position, Quaternion.identity);
-        player.name = "Player";
     }
 }

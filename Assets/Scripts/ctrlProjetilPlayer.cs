@@ -34,7 +34,7 @@ public class ctrlProjetilPlayer : MonoBehaviour
     {
         float distanciaPlayerProjetil = Vector3.Distance(transform.position, playerPrefab.transform.position);
 
-        if (distanciaPlayerProjetil > 10)
+        if (distanciaPlayerProjetil > 100)
         {
             // Destroi o objeto se ele ultrapassar a distância de 100.
             Destroy(gameObject);
@@ -44,8 +44,7 @@ public class ctrlProjetilPlayer : MonoBehaviour
     void OnCollisionEnter(Collision col)
     {
         // Se o inimigo for atingido a bala se destroi e destroi o inimigo.
-
-        if (col.gameObject.name != "Player" && col.gameObject.name != "terreno")
+        if (col.gameObject.name.Contains("Enemy"))
         {
             Destroy(gameObject);
             Destroy(col.gameObject);

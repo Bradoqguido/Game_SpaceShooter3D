@@ -50,6 +50,7 @@ public class inimigo_movimentacao_linear : MonoBehaviour
             scriptPlayer.DarDanoAoPlayer(33);
 
             Debug.Log("Deu dano ao player.");
+            Destroy(gameObject);
         }
     }
 }

@@ -42,7 +42,7 @@ public class spawn : MonoBehaviour
 
     void SpawnInimigo()
     {
-        Vector3 position = new Vector3(Random.Range(-10.0F, 10.0F), 1, Random.Range(-10.0F, 10.0F));
+        Vector3 position = new Vector3(Random.Range(-30.0F, 30.0F), 1, Random.Range(-30.0F, 30.0F));
         Instantiate(inimigoPrefab, position, Quaternion.identity);
     }
 }

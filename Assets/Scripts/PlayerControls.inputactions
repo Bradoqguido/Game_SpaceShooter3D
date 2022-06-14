@@ -24,24 +24,6 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "Jump",
-                    "type": "Button",
-                    "id": "959737c6-3740-43a0-b102-f4e4dfce5499",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "Aim",
-                    "type": "Button",
-                    "id": "f8157c94-93f3-49ac-9e81-fed133e1d968",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
                     "name": "Shoot",
                     "type": "Button",
                     "id": "36118307-f858-4959-b622-fca0c804b785",
@@ -120,30 +102,8 @@
                 },
                 {
                     "name": "",
-                    "id": "5bfb31a4-ce8f-4403-98a6-490b082bdf1a",
+                    "id": "b1f4f648-b2aa-485e-b3a8-c5acb6d00508",
                     "path": "<Keyboard>/space",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Jump",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "f89a72fa-2315-4870-840b-e044ed84e80c",
-                    "path": "<Mouse>/rightButton",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Aim",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "aa28ca52-61d9-417b-ad8c-0d56676a62b7",
-                    "path": "<Mouse>/leftButton",
                     "interactions": "",
                     "processors": "",
                     "groups": "",

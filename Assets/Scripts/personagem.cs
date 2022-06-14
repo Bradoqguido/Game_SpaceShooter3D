@@ -11,8 +11,6 @@ public class personagem : MonoBehaviour
     [SerializeField]
     private float playerSpeed = 2.0f;
     [SerializeField]
-    private float jumpHeight = 1.0f;
-    [SerializeField]
     private float gravityValue = -9.81f;
     [SerializeField]
     private float rotationSpeed = .9f;
@@ -24,7 +22,6 @@ public class personagem : MonoBehaviour
     private Transform cameraTransform;
 
     private InputAction moveAction;
-    private InputAction jumpAction;
     private InputAction shootAction;
 
     public int vida = 100;
@@ -47,7 +44,6 @@ public class personagem : MonoBehaviour
         playerInput = GetComponent<PlayerInput>();
         cameraTransform = Camera.main.transform;
         moveAction = playerInput.actions["Move"];
-        jumpAction = playerInput.actions["Jump"];
         shootAction = playerInput.actions["Shoot"];
     }
 
@@ -84,12 +80,6 @@ public class personagem : MonoBehaviour
         move.y = 0f;
 
         controller.Move(move * Time.deltaTime * playerSpeed);
-
-
-        if (jumpAction.triggered && groundedPlayer)
-        {
-            playerVelocity.y += Mathf.Sqrt(jumpHeight * -3.0f * gravityValue);
-        }
 
         playerVelocity.y += gravityValue * Time.deltaTime;
         controller.Move(playerVelocity * Time.deltaTime);

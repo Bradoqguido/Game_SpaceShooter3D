@@ -7,7 +7,7 @@ public class spawn : MonoBehaviour
     // Controla o respaw de inimigos.
     public float tempoParaRespawnInimigo = 5;
     public float tempoParaSpawnVida = 15;
-    public float tempoParaPassarDeFase = 60;
+    public float tempoParaPassarDeFase = 30;
     public GameObject inimigoPrefab;
     public GameObject heartPrefab;
 
@@ -49,7 +49,7 @@ public class spawn : MonoBehaviour
         if (GameObject.Find("Player") == null)
         {
             Debug.Log("Acabou o jogo, game over!");
-            Loader.Load(Loader.Scene.MenuScene);
+            Loader.Load(Loader.Scene.GameOverScene);
         }
 
         if (tempoParaPassarDeFase <= 0)

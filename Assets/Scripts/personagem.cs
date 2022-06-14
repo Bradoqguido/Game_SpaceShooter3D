@@ -76,10 +76,11 @@ public class personagem : MonoBehaviour
 
     void OnCollisionEnter(Collision col)
     {
-        // Se o inimigo encostar no player o player morre.
-        if (col.gameObject.name == "Heart")
+        // Se o coração encostar no player o player ganha vida.
+        if (col.gameObject.name.Contains("Heart"))
         {
             Debug.Log("Coletando Vida.");
+            AddVidaAoPlayer(10);
             pickUpPowerUp.Play();
             Destroy(col.gameObject);
         }

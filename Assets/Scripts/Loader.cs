@@ -9,6 +9,7 @@ public static class Loader
     {
         MenuScene,
         Level01Scene,
+        GameOverScene,
     }
 
     public static void Load(Scene pScene)

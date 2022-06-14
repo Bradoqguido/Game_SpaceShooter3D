@@ -36,7 +36,7 @@ public class spawn : MonoBehaviour
         if (GameObject.Find("Player") == null)
         {
             Debug.Log("Acabou o jogo, game over!");
-            Loader.Load(Loader.Scene.GameScene);
+            Loader.Load(Loader.Scene.MenuScene);
         }
     }
 

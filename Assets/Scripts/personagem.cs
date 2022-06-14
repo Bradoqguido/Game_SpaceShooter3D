@@ -39,6 +39,8 @@ public class personagem : MonoBehaviour
 
     public AudioSource destructionSound;
 
+    public AudioSource pickUpPowerUp;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -69,6 +71,17 @@ public class personagem : MonoBehaviour
         if (shootAction.triggered)
         {
             Atirar();
+        }
+    }
+
+    void OnCollisionEnter(Collision col)
+    {
+        // Se o inimigo encostar no player o player morre.
+        if (col.gameObject.name == "Heart")
+        {
+            Debug.Log("Coletando Vida.");
+            pickUpPowerUp.Play();
+            Destroy(col.gameObject);
         }
     }
 

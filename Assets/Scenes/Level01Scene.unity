@@ -237,6 +237,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tempoParaRespawnInimigo: 5
+  tempoParaSpawnVida: 15
+  tempoParaPassarDeFase: 60
   inimigoPrefab: {fileID: 895604475162042592, guid: 4c4d6774657e3f74ab6f2f905c0414a5, type: 3}
   heartPrefab: {fileID: 534248467519705630, guid: 953da5b786f16d24ca16ea6ffa6a75b1, type: 3}
 --- !u!1001 &797250311

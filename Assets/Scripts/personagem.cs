@@ -33,6 +33,12 @@ public class personagem : MonoBehaviour
     // prefab do projetil.
     public GameObject projetilPrefab;
 
+    public AudioSource shootSound;
+
+    public AudioSource damageSound;
+
+    public AudioSource destructionSound;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -54,6 +60,7 @@ public class personagem : MonoBehaviour
 
         if (vida <= 0)
         {
+            destructionSound.Play();
             Destroy(gameObject);
         }
 
@@ -101,12 +108,20 @@ public class personagem : MonoBehaviour
         this.posicaoProjetil.z = transform.position.z + distanciaPlayerProjetil * Mathf.Cos(angulo);
 
         // Cria o projetil em tempo de execução.
+        shootSound.Play();
         Instantiate(projetilPrefab, posicaoProjetil, transform.rotation);
     }
 
     public void DarDanoAoPlayer(int intDano)
     {
         Debug.Log("Dando dano ao player.");
+        damageSound.Play();
         vida -= intDano;
+    }
+
+    public void AddVidaAoPlayer(int intVida)
+    {
+        Debug.Log("Recebendo vida.");
+        vida += intVida;
     }
 }

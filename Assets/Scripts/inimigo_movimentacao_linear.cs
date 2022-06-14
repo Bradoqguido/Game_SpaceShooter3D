@@ -13,6 +13,8 @@ public class inimigo_movimentacao_linear : MonoBehaviour
 
     private NavMeshAgent navMeshAgent;
 
+    public AudioSource destructionSound;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -44,6 +46,7 @@ public class inimigo_movimentacao_linear : MonoBehaviour
         if (col.gameObject.name == "Player")
         {
             Debug.Log("Tocou no player.");
+            destructionSound.Play();
 
             GameObject playerObject = GameObject.Find("Player");
             personagem scriptPlayer = (personagem)playerObject.GetComponent(typeof(personagem));

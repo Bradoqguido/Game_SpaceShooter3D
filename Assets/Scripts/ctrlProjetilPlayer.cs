@@ -9,6 +9,9 @@ public class ctrlProjetilPlayer : MonoBehaviour
     private Vector3 vetorDeForcaProjetil;
     public GameObject playerPrefab;
 
+    public AudioSource colisionSound;
+    public AudioSource pickUpPowerUp;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -46,6 +49,19 @@ public class ctrlProjetilPlayer : MonoBehaviour
         // Se o inimigo for atingido a bala se destroi e destroi o inimigo.
         if (col.gameObject.name.Contains("Enemy"))
         {
+            colisionSound.Play();
+            Destroy(gameObject);
+            Destroy(col.gameObject);
+        }
+
+        // Se o inimigo for atingido a bala se destroi e destroi o objeto.
+        if (col.gameObject.name.Contains("Heart"))
+        {
+            pickUpPowerUp.Play();
+            GameObject playerObject = GameObject.Find("Player");
+            personagem scriptPlayer = (personagem)playerObject.GetComponent(typeof(personagem));
+            scriptPlayer.AddVidaAoPlayer(10);
+
             Destroy(gameObject);
             Destroy(col.gameObject);
         }
